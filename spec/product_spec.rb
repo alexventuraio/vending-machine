@@ -1,4 +1,4 @@
-require './product'
+require './lib/product'
 
 RSpec.describe Product do
 	describe '#initialize' do

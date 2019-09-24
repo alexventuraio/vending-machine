@@ -1,5 +1,5 @@
-require './shopping_cart'
-require './product'
+require './lib/shopping_cart'
+require './lib/product'
 
 RSpec.describe ShoppingCart do
 	describe '#initialize' do

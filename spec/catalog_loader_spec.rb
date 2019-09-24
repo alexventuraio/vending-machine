@@ -1,5 +1,5 @@
-require './catalog_loader'
-require './product'
+require './lib/catalog_loader'
+require './lib/product'
 
 RSpec.describe CatalogLoader do
 	describe '.load_products' do

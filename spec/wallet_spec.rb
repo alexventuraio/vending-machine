@@ -1,4 +1,4 @@
-require './wallet'
+require './lib/wallet'
 
 RSpec.describe Wallet do
 	describe '#initialize' do
