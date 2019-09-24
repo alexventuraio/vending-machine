@@ -1,6 +1,6 @@
-require './lib/catalog'
-require './lib/catalog_loader'
-require './lib/product'
+require_relative '../lib/catalog'
+require_relative '../lib/catalog_loader'
+require_relative '../lib/product'
 
 RSpec.describe Catalog do
 	describe '#initialize' do
