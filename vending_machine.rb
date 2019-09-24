@@ -1,11 +1,10 @@
-require 'pry'
 require_relative 'catalog'
 require_relative 'catalog_loader'
 require_relative 'product'
 require_relative 'shopping_cart'
 require_relative 'wallet'
 
-class VendingMachineView
+class VendingMachine
 	def initialize(catalog_file = 'products.csv')
 		@catalog = Catalog.new(CatalogLoader.load_products(catalog_file))
 		@shopping_cart = ShoppingCart.new
@@ -49,7 +48,7 @@ class VendingMachineView
 	def step_anything_else
 		show_anything_else
 
-		user_input = gets.chomp
+		user_input = get_user_input
 
 		if user_input.downcase == 'y'
 			step_select_products
@@ -92,7 +91,7 @@ class VendingMachineView
 
 	def step_select_products
 		show_select_product_promt
-		user_input = gets.chomp
+		user_input = get_user_input
 
 		product = search_product_by_code(user_input)
 
@@ -117,7 +116,7 @@ class VendingMachineView
 	def step_load_money
 		show_money_menu
 
-		while user_input = gets.chomp # loop while getting user input
+		while user_input = get_user_input # loop while getting user input
 			if Wallet::VALID_DENOMINATIONS.include?(user_input)
 				@wallet.add(user_input)
 			elsif @wallet.balance > 0 && user_input.eql?('p')
@@ -141,7 +140,8 @@ class VendingMachineView
 	def print_welcome_msg
 		puts "\n\n===== Welcome to Vending Machine ====="
 	end
-end
 
-machine = VendingMachineView.new
-machine.start
+	def get_user_input
+		STDIN.gets.chomp
+	end
+end
