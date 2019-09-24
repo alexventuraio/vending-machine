@@ -31,6 +31,8 @@ At this point you will be able to see the main menu of the application in your t
 
 It will load the default CSV file `products.csv` which is included in this repository.
 
+### Use a different CSV file for products menu
+
 If you want to provide a different file, first make sure that the structure of each row meets the structure below. In this structure of the CSV file, each row is a product to be shown in the products menu.
 
 | Name  | Code | Price |
@@ -38,7 +40,7 @@ If you want to provide a different file, first make sure that the structure of e
 | Water | C1   | 1.25  |
 | Soda  | C3   | 2.99  |
 
-** It is important to emphasize that you do not have to include any headers row in the file, just include product rows with the same structure. The final file could be something like this:**
+**It is important to emphasize that you do not have to include any headers row in the file, just include product rows with the same structure. The final file could be something like this:**
 
 | Water | C1  | 1.25 |
 | ----- | --- | ---- |
@@ -51,7 +53,7 @@ pass the path to the file as an argument as shown below:
 $ ruby main.rb "spec/test_products.csv"
 ```
 
-### To run the test suite
+### Test suite
 
 First, you need to make sure you have [RSpec](https://relishapp.com/rspec/docs/gettingstarted) installed. As required above, once you have `ruby` installed, install `RSpec` is pretty straightforward. Just run the following command inside the root folder of the application:
 

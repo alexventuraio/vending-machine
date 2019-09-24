@@ -1,4 +1,4 @@
-require_relative 'vending_machine'
+require './lib/vending_machine'
 
 # Reas if a different CSV file was given as argument
 csv_file = ARGV[0]
