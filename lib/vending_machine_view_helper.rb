@@ -1,10 +1,9 @@
 module VendingMachineViewHelper
-	def render_view_vended_products_msg(items, total)
+	def render_view_vended_products_msg(items)
 		puts "\n\nYour products are:"
 		items.each do |item|
 			puts "- #{item.name}"
 		end
-		render_view_refund_msg(total)
 	end
 
 	def render_view_refund_msg(total)

@@ -38,7 +38,8 @@ class VendingMachine
 		if user_input.downcase == 'y'
 			step_select_products
 		else
-			render_view_vended_products_msg(@shopping_cart.items, @wallet.balance - @shopping_cart.get_total)
+			render_view_vended_products_msg(@shopping_cart.items)
+			render_view_refund_msg(@wallet.balance - @shopping_cart.get_total)
 		end
 	end
 
@@ -47,7 +48,8 @@ class VendingMachine
 
 		case
 		when result == 0
-			render_view_vended_products_msg(@shopping_cart.items, @wallet.balance - @shopping_cart.get_total)
+			render_view_vended_products_msg(@shopping_cart.items)
+			render_view_refund_msg(@wallet.balance - @shopping_cart.get_total)
 		when result < 0
 			render_view_insufficient_funds_msg(result.abs)
 			step_load_money
@@ -74,7 +76,7 @@ class VendingMachine
 			@shopping_cart.add_item(product)
 			validate_balance
 		else
-			render_view_products_menu
+			render_view_products_menu(@catalog)
 			render_view_error_msg('Unknown product code!')
 			step_select_products
 		end
