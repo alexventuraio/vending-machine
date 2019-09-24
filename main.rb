@@ -1,6 +1,6 @@
 require './lib/vending_machine'
 
-# Reas if a different CSV file was given as argument
+# Verify if a different CSV file was given as argument
 csv_file = ARGV[0]
 
 if csv_file
