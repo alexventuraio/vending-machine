@@ -37,7 +37,7 @@ RSpec.describe VendingMachineService do
 		it 'xxxx' do
 			expect {
 				simulate_stdin('e', 'e', 'p', 'a1', 'n') do
-					VendingMachineService.new.start
+					subject.start
 				end
 			}.to output("\n\nYour products are:\n- Chocolate bar\n\nYour change is: 0.25\n").to_stdout
 		end
