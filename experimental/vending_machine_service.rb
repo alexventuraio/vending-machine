@@ -11,15 +11,16 @@ class VendingMachineService
 
 	attr_reader :catalog, :shopping_cart, :wallet
 
-	def initialize(catalog_file = 'products.csv')
+	def initialize(catalog_file = 'products.csv', silent_mode = false)
+		@silent_mode = silent_mode
 		@catalog = Catalog.new(CatalogLoader.load_products(catalog_file))
 		@shopping_cart = ShoppingCart.new
 		@wallet = Wallet.new
 	end
 
 	def start
-		#render_view_welcome_msg
-		#render_view_products_menu(@catalog)
+		render_view_welcome_msg
+		render_view_products_menu(@catalog)
 		step_load_money
 		return if @refund
 		step_select_products
@@ -34,7 +35,7 @@ class VendingMachineService
 	end
 
 	def step_anything_else
-		#render_view_anything_else_msg
+		render_view_anything_else_msg
 
 		user_input = get_user_input
 
@@ -54,7 +55,7 @@ class VendingMachineService
 			render_view_vended_products_msg(@shopping_cart.items)
 			render_view_refund_msg(@wallet.balance - @shopping_cart.get_total)
 		when result < 0
-			#render_view_insufficient_funds_msg(result.abs)
+			render_view_insufficient_funds_msg(result.abs)
 			step_load_money
 			validate_balance
 		when result > 0
@@ -70,7 +71,7 @@ class VendingMachineService
 	end
 
 	def step_select_products
-		#render_view_select_product_promt
+		render_view_select_product_promt
 		user_input = get_user_input
 
 		product = search_product_by_code(user_input)
@@ -79,14 +80,14 @@ class VendingMachineService
 			@shopping_cart.add_item(product)
 			validate_balance
 		else
-			#render_view_products_menu(@catalog)
-			#render_view_error_msg('Unknown product code!')
+			render_view_products_menu(@catalog)
+			render_view_error_msg('Unknown product code!')
 			step_select_products
 		end
 	end
 
 	def step_load_money
-		#render_view_money_menu(@wallet.balance)
+		render_view_money_menu(@wallet.balance)
 
 		while user_input = get_user_input # loop while getting user input
 			if Wallet::VALID_DENOMINATIONS.include?(user_input)
@@ -98,10 +99,10 @@ class VendingMachineService
 				@refund = true
 				break
 			else
-				#render_view_error_msg('Unknown command!')
+				render_view_error_msg('Unknown command!')
 			end
 
-			#render_view_money_menu(@wallet.balance)
+			render_view_money_menu(@wallet.balance)
 		end
 	end
 
@@ -110,8 +111,8 @@ class VendingMachineService
 	end
 end
 
-#machine = VendingMachineService.new
-#machine.start
+machine = VendingMachineService.new
+machine.start
 #require_relative '../spec/support/io_test_helpers'
 ## Make `simulate_stdin` method a class method by adding `self`
 #IoTestHelpers.simulate_stdin('e', 'e', 'p', 'a1', 'n') do
