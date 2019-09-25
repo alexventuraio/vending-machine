@@ -18,20 +18,6 @@ class VendingMachineService
 	end
 
 	def start
-		loop do
-			print "> "
-			command = $stdin.gets.chomp
-
-			if command == 'exit'
-				puts '*********'
-				break
-			else
-				puts "echo: \"#{command}\""
-			end
-		end
-	end
-
-	def startx
 		render_view_welcome_msg
 		render_view_products_menu(@catalog)
 		step_load_money
@@ -128,6 +114,6 @@ end
 #machine.start
 require_relative '../spec/support/io_test_helpers'
 ## Make `simulate_stdin` method a class method by adding `self`
-IoTestHelpers.simulate_stdin('e', 'e', 'p', 'exit') do
+IoTestHelpers.simulate_stdin('e', 'e', 'p', 'a1', 'n') do
 	VendingMachineService.new.start
 end
