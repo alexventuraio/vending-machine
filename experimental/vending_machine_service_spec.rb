@@ -39,7 +39,7 @@ RSpec.describe VendingMachineService do
 				simulate_stdin('e', 'e', 'p', 'a1', 'n') do
 					VendingMachineService.new.start
 				end
-			}.to output("").to_stdout
+			}.to output("\n\nYour products are:\n- Chocolate bar\n\nYour change is: 0.25\n").to_stdout
 		end
 	end
 
