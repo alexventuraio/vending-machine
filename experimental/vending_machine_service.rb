@@ -11,7 +11,7 @@ class VendingMachineService
 
 	attr_reader :catalog, :shopping_cart, :wallet
 
-	def initialize(catalog_file = 'products.csv', silent_mode = false)
+	def initialize(catalog_file: 'products.csv', silent_mode: false)
 		@silent_mode = silent_mode
 		@catalog = Catalog.new(CatalogLoader.load_products(catalog_file))
 		@shopping_cart = ShoppingCart.new
@@ -111,8 +111,8 @@ class VendingMachineService
 	end
 end
 
-machine = VendingMachineService.new
-machine.start
+#machine = VendingMachineService.new
+#machine.start
 #require_relative '../spec/support/io_test_helpers'
 ## Make `simulate_stdin` method a class method by adding `self`
 #IoTestHelpers.simulate_stdin('e', 'e', 'p', 'a1', 'n') do
