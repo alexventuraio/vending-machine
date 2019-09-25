@@ -36,10 +36,10 @@ RSpec.describe VendingMachineService do
 	describe '.start' do
 		it 'xxxx' do
 			expect {
-				simulate_stdin('exit') do
+				simulate_stdin('e', 'e', 'p', 'a1', 'n') do
 					VendingMachineService.new.start
 				end
-			}.to output("> *********\n").to_stdout
+			}.to output("").to_stdout
 		end
 	end
 

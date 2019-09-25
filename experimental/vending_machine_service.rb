@@ -112,8 +112,8 @@ end
 
 #machine = VendingMachineService.new
 #machine.start
-require_relative '../spec/support/io_test_helpers'
+#require_relative '../spec/support/io_test_helpers'
 ## Make `simulate_stdin` method a class method by adding `self`
-IoTestHelpers.simulate_stdin('e', 'e', 'p', 'a1', 'n') do
-	VendingMachineService.new.start
-end
+#IoTestHelpers.simulate_stdin('e', 'e', 'p', 'a1', 'n') do
+	#VendingMachineService.new.start
+#end
