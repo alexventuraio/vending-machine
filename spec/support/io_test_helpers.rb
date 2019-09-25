@@ -1,5 +1,8 @@
 require 'stringio'
 
+# A very good reference of how to implement this STDIN simulator, found at:
+# https://tommaso.pavese.me/2016/05/08/understanding-and-testing-io-in-ruby/
+
 module IoTestHelpers
 	extend self
 
